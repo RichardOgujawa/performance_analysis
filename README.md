@@ -1,12 +1,12 @@
 # Performance Analytics
 
-There's a 43% chance that teams that were promoted in the prior season into the Premier League remain there. That is to say that if you get into the Premier League, the odds of you staying are almost as good as a toin coss. Whilst teams like Brighton, Leicester City and Brentford were able to beat this odds in recent years and , you have teams like Fulham, Burnley and Sheffield United whose fortunes seem to run out soon after being promoted. 
+There's a **43% chance that teams that were promoted in the prior season into the Premier League remain there**. That is to say that the chances of a newly promoted team retaining their place int the Premier League (PL) for the following season are almost as good as calling tails on a coin flip. Whilst teams like Brighton, Leicester City and Brentford were able to beat this odds in recent years, you have teams like Fulham, Burnley and Sheffield United whose fortunes seem to run out soon after being promoted. 
 
-This research project explores this idea a little bit deeper, with the intention of uncovering the underlying patterns and factors which cause some newly promoted teams to thrive, whilst others perhaps find it a little bit more challenging to become Premier League mainstays.
+This research project explores this idea a little bit deeper, with the intention of uncovering the underlying patterns and factors which cause some newly promoted teams to thrive in the PL, whilst others perhaps find it a little bit more challenging to become PL mainstays.
 
-**Note:** The written report will be availble as both a [Medium article](), and also as an [academic report](), once the research has been completed.
+**Note:** The accompanying written report will be availble once the research has been completed.
 
-## Overview of Stages involved in Research so far
+## Overview of Stages Completed so far
 - Creation of ER Model
 - SQL file to create database
 <!-- - Web scraping (next) -->

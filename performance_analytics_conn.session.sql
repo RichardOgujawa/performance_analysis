@@ -10,33 +10,31 @@ CREATE SCHEMA IF NOT EXISTS football_db;
 -- Use the football schema/db going forward to create tables in it
 USE football_db; 
 
+-- DROP TABLE IF EXISTS MatchDetails;
+-- DROP TABLE IF EXISTS AttackStats;
+-- DROP TABLE IF EXISTS Player;
+-- DROP TABLE IF EXISTS Team;
+
 -- @block
 -- Team Table - name of each team
 CREATE TABLE IF NOT EXISTS Team (
     team_id INT PRIMARY KEY AUTO_INCREMENT,
     team_name VARCHAR(125) NOT NULL
     -- These stats are over the course of the season
-    season_avg_goals_per_game INT NOT NULL, 
-    season_avg_goals_from_inside_the_box INT NOT NULL,
-    season_avg_left_foot_goals INT NOT NULL, 
-    season_avg_right_foot_goals INT NOT NULL, 
-    season_avg_headed_goals INT NOT NULL, 
-    season_avg_big_changes_per_game INT NOT NULL, 
-    season_avg_big_chances_missed_per_games INT NOT NULL,
-    season_avg_total_shots_per_game INT NOT NULL, 
-    season_avg_shots_on_target_per_game INT NOT NULL, 
-    season_avg_shots_off_target_per_game INT NOT NULL, 
-    season_avg_blocked_shots_per_game INT NOT NULL, 
-    season_avg_ball_possession INT NOT NULL,
-    season_passing_accuracy_in_opp_half INT NOT NULL,
+    season_avg_goals_per_game DECIMAL(3,2) NOT NULL, 
+    season_avg_goals_from_inside_the_box DECIMAL(3,2) NOT NULL,
+    season_avg_left_foot_goals DECIMAL(4,2) NOT NULL, 
+    season_avg_right_foot_goals DECIMAL(4,2) NOT NULL, 
+    season_avg_headed_goals DECIMAL(4,2) NOT NULL, 
+    season_avg_big_changes_per_game DECIMAL(4,2) NOT NULL, 
+    season_avg_big_chances_missed_per_games DECIMAL(4,2) NOT NULL,
+    season_avg_total_shots_per_game DECIMAL(5,2) NOT NULL, 
+    season_avg_shots_on_target_per_game DECIMAL(5,2) NOT NULL, 
+    season_avg_shots_off_target_per_game DECIMAL(5,2) NOT NULL, 
+    season_avg_blocked_shots_per_game DECIMAL(5,2) NOT NULL, 
+    season_avg_ball_possession DECIMAL(5,2) NOT NULL,
+    season_passing_accuracy_in_opp_half DECIMAL(5,2) NOT NULL,
 );
-
-
--- @block 
-INSERT INTO Team (team_name) VALUES
-('Brighton'),
-('Sheffield');
-
 
 -- @block
 -- Match Details Table - high-level match overview
@@ -49,8 +47,8 @@ CREATE TABLE IF NOT EXISTS MatchDetails(
     away_goals INT NOT NULL,
     home_possession INT NOT NULL, 
     away_possession INT NOT NULL,
-    home_expected_goals DECIMAL(3,2) NOT NULL,
-    away_expected_goals DECIMAL(3,2) NOT NULL,
+    home_expected_goals DECIMAL(4,2) NOT NULL,
+    away_expected_goals DECIMAL(4,2) NOT NULL,
     home_total_shots INT NOT NULL, 
     away_total_shots INT NOT NULL, 
     home_shots_on_target INT NOT NULL, 
@@ -67,8 +65,6 @@ CREATE TABLE IF NOT EXISTS MatchDetails(
     away_shots_outside_box INT NOT NULL, 
     home_accurate_passes INT NOT NULL, 
     away_accurate_passes INT NOT NULL, 
-    
-
     
     -- Foreign Keys
     home_team_fk INT NOT NULL,
@@ -94,21 +90,21 @@ CREATE TABLE Player(
     games_started INT NOT NULL,
     total_goals INT NOT NULL, 
     expected_goals DECIMAL(3, 2) NOT NULL, 
-    goals_per_game DECIMAL(3, 2) NOT NULL, 
-    shots_per_game DECIMAL (3, 2) NOT NULL,
-    shots_on_target_per_game DECIMAL(3, 2) NOT NULL, 
-    big_changes_missed DECIMAL(3, 2) NOT NULL,
+    goals_per_game DECIMAL(4, 2) NOT NULL, 
+    shots_per_game DECIMAL (4, 2) NOT NULL,
+    shots_on_target_per_game DECIMAL(4, 2) NOT NULL, 
+    big_changes_missed DECIMAL(4, 2) NOT NULL,
     goal_conversion INT NOT NULL, 
-    goals_from_inside_the_box DECIMAL(3, 2) NOT NULL, -- The sofascore values will be converted from fractions to decimals
-    goals_from_outside_the_box DECIMAL(3, 2) NOT NULL, -- The sofascore values will be converted from fractions to decimals
+    goals_from_inside_the_box DECIMAL(4, 2) NOT NULL, -- The sofascore values will be converted from fractions to decimals
+    goals_from_outside_the_box DECIMAL(4, 2) NOT NULL, -- The sofascore values will be converted from fractions to decimals
     headed_goals INT NOT NULL,
     left_foot_goals INT NOT NULL, 
     right_foot_goals INT NOT NULL, 
     total_assists INT NOT NULL, 
-    expected_assists DECIMAL(3, 2) NOT NULL, 
+    expected_assists DECIMAL(4, 2) NOT NULL, 
     big_chances_created INT NOT NULL,
-    avg_passing_accuracy DECIMAL(3,2) NOT NULL, -- accurate_per_game in sofascore
-    passing_accuracy_in_opp_half DECIMAL(3,2) NOT NULL, 
+    avg_passing_accuracy DECIMAL(5,2) NOT NULL, -- accurate_per_game in sofascore
+    passing_accuracy_in_opp_half DECIMAL(5,2) NOT NULL, 
 
     -- Foreign Keys
     team_fk INT NOT NULL, 
@@ -124,12 +120,12 @@ CREATE TABLE AttackStats(
     inside_box TINYINT(1) NOT NULL, -- O for "no", 1 for "yes"
     body_part VARCHAR(20) NOT NULL, -- the part of the player's body the ball hit before going in
     situation VARCHAR(30) NOT NULL,
-    expected_goals DECIMAL(3, 2) -- Expected Goal
-    expected_goals_on_target DECIMAL(3, 2) -- Expected Goal on Target
+    expected_goal DECIMAL(3, 2) -- Expected Goal
+    expected_goal_on_target DECIMAL(3, 2) -- Expected Goal on Target
     expected_threat DECIMAL(3, 2) -- Expected Threat
     goal_zone VARCHAR(30) NOT NULL,
     player_position VARCHAR(30) NOT NULL,
-    preferred_foot_shot TINYINT(1) NOT NULL, -- Preferred Foot Shot, 1 if they shot the ball on their preferred foot and 0 if not.
+    shot_with_preferred_foot TINYINT(1) NOT NULL,
 
     -- Foreign Keys
     player_fk INT NOT NULL, -- who scored the goal

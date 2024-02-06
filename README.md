@@ -4,7 +4,8 @@ There's a **43% chance that teams that were promoted in the prior season into th
 
 This research project explores this idea a little bit deeper, with the intention of uncovering the underlying patterns and factors which cause some newly promoted teams to thrive in the PL, whilst others perhaps find it a little bit more challenging to become PL mainstays.
 
-**Note:** The accompanying written report will be availble once the research has been completed.
+## Episodes
+- [Pilot - Project Overview](https://medium.com/@richardogujawa/football-analysis-2df5676f6936)
 
 ## Overview of Stages Completed so far
 - Creation of ER Model

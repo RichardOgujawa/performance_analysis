@@ -10,19 +10,23 @@ CREATE SCHEMA IF NOT EXISTS football_db;
 -- Use the football schema/db going forward to create tables in it
 USE football_db; 
 
--- DROP TABLE IF EXISTS MatchDetails;
--- DROP TABLE IF EXISTS AttackStats;
--- DROP TABLE IF EXISTS Player;
--- DROP TABLE IF EXISTS Team;
+DROP TABLE IF EXISTS MatchDetails;
+DROP TABLE IF EXISTS AttackStats;
+DROP TABLE IF EXISTS Player;
+DROP TABLE IF EXISTS Team;
 
 -- @block
 -- Team Table - name of each team
 CREATE TABLE IF NOT EXISTS Team (
     team_id INT PRIMARY KEY AUTO_INCREMENT,
-    team_name VARCHAR(125) NOT NULL
+    team_name VARCHAR(125) NOT NULL,
     -- These stats are over the course of the season
+    matches_played INT NOT NULL,
     season_avg_goals_per_game DECIMAL(3,2) NOT NULL, 
     season_avg_goals_from_inside_the_box DECIMAL(3,2) NOT NULL,
+    season_avg_goals_from_outside_the_box DECIMAL(3,2) NOT NULL,
+    season_avg_shots_from_inside_the_box DECIMAL(3,2) NOT NULL,
+    season_avg_shots_from_outside_the_box DECIMAL(3,2) NOT NULL,
     season_avg_left_foot_goals DECIMAL(4,2) NOT NULL, 
     season_avg_right_foot_goals DECIMAL(4,2) NOT NULL, 
     season_avg_headed_goals DECIMAL(4,2) NOT NULL, 
@@ -33,7 +37,7 @@ CREATE TABLE IF NOT EXISTS Team (
     season_avg_shots_off_target_per_game DECIMAL(5,2) NOT NULL, 
     season_avg_blocked_shots_per_game DECIMAL(5,2) NOT NULL, 
     season_avg_ball_possession DECIMAL(5,2) NOT NULL,
-    season_passing_accuracy_in_opp_half DECIMAL(5,2) NOT NULL,
+    season_passing_accuracy_in_opp_half DECIMAL(5,2) NOT NULL
 );
 
 -- @block
@@ -120,9 +124,9 @@ CREATE TABLE AttackStats(
     inside_box TINYINT(1) NOT NULL, -- O for "no", 1 for "yes"
     body_part VARCHAR(20) NOT NULL, -- the part of the player's body the ball hit before going in
     situation VARCHAR(30) NOT NULL,
-    expected_goal DECIMAL(3, 2) -- Expected Goal
-    expected_goal_on_target DECIMAL(3, 2) -- Expected Goal on Target
-    expected_threat DECIMAL(3, 2) -- Expected Threat
+    expected_goal DECIMAL(3, 2) NOT NULL, -- Expected Goal
+    expected_goal_on_target DECIMAL(3, 2) NOT NULL,-- Expected Goal on Target
+    expected_threat DECIMAL(3, 2) NOT NULL, -- Expected Threat
     goal_zone VARCHAR(30) NOT NULL,
     player_position VARCHAR(30) NOT NULL,
     shot_with_preferred_foot TINYINT(1) NOT NULL,

@@ -18,4 +18,7 @@ This research project explores this idea a little bit deeper, with the intention
 - Python script to run to perform all of the data transformations and loading,  as well as data visualizations.
 - SQL file for data analysis 
 - Tableau for data visualizations.
-- Written Report -->
+- Use linear regression model 
+- Monte Carlo Simulation to show how much an increase in each stat, and how that would affect the remainder of their season, and where they would by likely to end up as a result.
+- Written Report 
+-->
